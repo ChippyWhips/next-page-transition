@@ -1,21 +1,9 @@
-# Hello World example
+# Next.js page transition example
 
-This example shows the most basic idea behind Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+This example shows a way to gracefully transition between pages with Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`.
 
-## Deploy your own
+Using `next/link` will perform a client side transition between these 2 pages, however the page change will be as fast as Next is able to perform it. Most of the time, it's almost instant feeling. Though great performance, it can often feel quite jarring as an experience, so this experiment shows how to slow things down a little for a smoother experience, without losing any of the benefits of `next/link`.
 
-Deploy the example using [Vercel](https://vercel.com):
+By wrapping `next/link` inside of your own custom link component, you can prevent the client side navigation, perform your exit transition, then continue with the navigation.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/hello-world)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example hello-world hello-world-app
-# or
-yarn create next-app --example hello-world hello-world-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+This example uses `gsap` for transitions, but this is not a requirement, once the client side navigation is prevented, you're free to do whatever you like before continuing the navigation, the concept is the same.
